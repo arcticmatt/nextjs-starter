@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Reusable template for Next.js projects.
+
+Sets up TypeScript and eslint.
