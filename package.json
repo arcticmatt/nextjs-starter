@@ -6,6 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "eslint": "eslint --no-error-on-unmatched-pattern 'src/**/*.ts' 'src/**/*.tsx' 'pages/**/*.tsx'",
+    "gen-colors": "node scripts/genColors.js",
+    "gen-fonts": "node scripts/genFonts.js",
     "start": "next start"
   },
   "dependencies": {
