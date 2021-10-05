@@ -13,7 +13,10 @@ function getFontClasses() {
   const lines = data
     .split("\n")
     .filter(
-      (line) => line.includes("--font") || line.includes("--line-height")
+      (line) =>
+        line.includes("--font") ||
+        line.includes("--line-height") ||
+        line.includes("--letter-spacing")
     );
 
   const fontClasses = lines.map((line) => {
@@ -37,8 +40,26 @@ function outputFontClasses(fontClasses) {
     logger.write(`  font-family: var(--font-family-${fontClass});\n`);
     logger.write(`  font-size: var(--font-size-${fontClass});\n`);
     logger.write(`  font-weight: var(--font-weight-${fontClass});\n`);
+    logger.write(`  letter-spacing: var(--letter-spacing-${fontClass});\n`);
     logger.write(`  line-height: var(--line-height-${fontClass});\n`);
     logger.write("}\n\n");
+
+    if (fontClass.includes("body")) {
+      // Font weights
+      [
+        ["500", "Medium"],
+        ["600", "SemiBold"],
+        ["700", "Bold"],
+      ].forEach((fontWeight) => {
+        logger.write(`.${fontClass}${fontWeight[1]}Font {\n`);
+        logger.write(`  font-family: var(--font-family-${fontClass});\n`);
+        logger.write(`  font-size: var(--font-size-${fontClass});\n`);
+        logger.write(`  font-weight: ${fontWeight[0]};\n`);
+        logger.write(`  letter-spacing: var(--letter-spacing-${fontClass});\n`);
+        logger.write(`  line-height: var(--line-height-${fontClass});\n`);
+        logger.write("}\n\n");
+      });
+    }
   });
 }
 
@@ -57,6 +78,16 @@ function outputFontClassEnum(fontClasses) {
     logger.write(
       `  ${capitalizeFirstLetter(fontClass)} = "${fontClass}Font",\n`
     );
+
+    if (fontClass.includes("body")) {
+      ["Medium", "SemiBold", "Bold"].forEach((fontWeight) => {
+        logger.write(
+          `  ${capitalizeFirstLetter(
+            fontClass
+          )}${fontWeight} = "${fontClass}${fontWeight}Font",\n`
+        );
+      });
+    }
   });
 
   logger.write("}\n\n");
