@@ -1,0 +1,72 @@
+.button {
+  align-items: center;
+  border-radius: 100px;
+  border-style: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  padding: 16px;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:disabled,
+.disabled {
+  cursor: default;
+  opacity: 48%;
+  pointer-events: none;
+}
+
+.buttonAutoWidth {
+  padding: 16px 24px;
+}
+
+.button:enabled:hover {
+  cursor: pointer;
+}
+
+.icon {
+  /* Fixes https://github.com/vercel/next.js/issues/21914 */
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.iconLeft {
+  margin-right: 10px;
+}
+
+.iconRight {
+  margin-left: 10px;
+}
+
+.linkContent:hover {
+  cursor: pointer;
+}
+
+/*
+ * Themes
+ */
+
+/* Replace me theme */
+
+.replaceMeTheme,
+.replaceMeThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-lightPink);
+  color: var(--color-lightPink);
+}
+
+.replaceMeTheme:enabled:active,
+.replaceMeThemeLink:active {
+  background-color: var(--color-lightPink);
+  color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .replaceMeTheme:enabled:hover,
+  .replaceMeThemeLink:hover {
+    background-color: var(--color-lightPink);
+    color: var(--color-white);
+  }
+}
