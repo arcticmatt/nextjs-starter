@@ -15,7 +15,8 @@
     "immer": "^9.0.6",
     "next": "^12.0.3",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-hook-form": "^7.19.1"
   },
   "devDependencies": {
     "@types/amplitude-js": "^8.0.1",
